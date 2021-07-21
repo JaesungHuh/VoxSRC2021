@@ -30,20 +30,20 @@ Your ouput file for scoring should be a single space-delimited text files contai
   
 For example: 
 ```
-0.33462736175334906 voxceleb1/id10136/kDIpLcekk9Q/00011.wav voxceleb1/id10136/kTkrpBqwqJs/00001.wav
-0.34354131205513616 voxceleb1/id10330/s6ZIytkNB1Q/00004.wav voxceleb1/id10330/2FPHpUr_Bss/00005.wav
-0.3652844824796708 voxceleb1/id10934/R1twEbtsG1w/00003.wav voxceleb1/id10453/2q9ZA1_VeGM/00003.wav
+0.503 id10912/H5qe-mHhOyQ/00007.wav id10912/nDpaVYtKQUo/00004.wav
+0.431 id10560/p_V0oeCcc0w/00011.wav id10560/_SIZKabFLAM/00001.wav
+0.351 id10792/La6IDPsWJHE/00007.wav id11044/BVzEyYdVLXg/00001.wav
 ```
 Also see `data/verif/scores.txt` for an example file. 
 
 
-The leaderboard for the challenge will compute two metrics, the Detection Cost and the Equal Error Rate (EER). Further details about the metrics are provided below. The file `compute_min_dcf.py` computes the detection cost. With the random scores provided you should get a Detection Cost of 1.0000 
+The leaderboard for the challenge will compute two metrics, the Detection Cost and the Equal Error Rate (EER). Further details about the metrics are provided below. The file `compute_min_dcf.py` computes the detection cost. With the random scores provided you should get a Detection Cost of 0.2919. 
 
 ```
 python compute_min_dcf.py --p-target 0.05 --c-miss 1 --c-fa 1 data/verif/scores.txt data/verif/trials.txt
 
 ```
-The file `compute_EER.py` computes the EER.  With the random scores provided you should get an EER of 49.975%
+The file `compute_EER.py` computes the EER.  With an example file provided you should get an EER of 5.177%
 ```
 python compute_EER.py --ground_truth data/verif/trials.txt --prediction data/verif/scores.txt
 ```
@@ -82,7 +82,7 @@ For speaker diarisation, we only have a single track. The goal is to break up mu
 
 ### Validation Data 
 
-The validation data can be obtained following the instructions [here](https://github.com/joonson/voxconverse).
+The validation data can be obtained following the instructions [here](https://github.com/joonson/voxconverse). Please note that you could use both Voxconverse dev & test set as your validation set.
 
 ### File Format
 Your output file for scoring (as well as the ground truth labels for the validation set which we provide) must be a [Rich Transcription Time Marked  (RTTM)](#rttm) file.
@@ -111,7 +111,7 @@ For instance:
     SPEAKER abcde 1   0.600   1.320 <NA> <NA> 3 <NA> <NA>
     SPEAKER abcde 1   1.950   0.630 <NA> <NA> 3 <NA> <NA>
 
-If you would like to confirm that your output RTTM file is valid, use the included validate_rttm.py script. We provide an example in `data/diar/baseline_dev.rttm`
+If you would like to confirm that your output RTTM file is valid, use the included validate_rttm.py script. We provide an example in `data/diar/baseline_dev.rttm` for Voxconverse dev set.
 
 ```
  python validate_rttm.py data/diar/baseline_dev.rttm
