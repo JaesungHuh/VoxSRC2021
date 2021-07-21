@@ -1,10 +1,10 @@
 # VoxSRC-20
-In this repository we provide the validation toolkit for the [VoxCeleb Speaker Recognition Challenge 2020](http://www.robots.ox.ac.uk/~vgg/data/voxceleb/competition.html). The challenge consists of two main tasks, speaker verification and speaker diarisation.  
+In this repository we provide the validation toolkit for the [VoxCeleb Speaker Recognition Challenge 2021](http://www.robots.ox.ac.uk/~vgg/data/voxceleb/competition2021.html). The challenge consists of two main tasks, speaker verification and speaker diarisation.  
 
 This repository contains submodules. Please use the following command to clone the repository:
 
 ```
-git clone https://github.com/a-nagrani/VoxSRC2020.git --recursive
+git clone https://github.com/JaesungHuh/VoxSRC2021.git --recursive
 ```
 
 #### Dependencies
@@ -17,8 +17,6 @@ pip install -r requirements.txt
 Within speaker verification, we have 3 tracks (open, closed, and self-supervised), however the validation and test data is the same for all three tracks. The validation and test data for the challenge both consist of pairs of audio segments, and the task is to determine whether they are from the same speaker or from different speakers. Teams are invited to create a system that takes the test data and produces a list of floating-point scores, with a single score for each pair of segments.
 
 ### Validation Data 
-
-In order to make a challenging validation set, we have obtained out of domain data for a subset of the identities in the VoxCeleb1 dataset. These additional audio segments can be downloaded [here](http://www.robots.ox.ac.uk/~vgg/data/voxceleb/data/voxceleb1_cd.zip).
 
 The validation data consists of trial pairs of speech from the identities in the VoxCeleb1 dataset. Each trial pair consists of two single-speaker audio segments and can be found in `data/verif/trials.txt`. 
          
@@ -113,13 +111,14 @@ For instance:
     SPEAKER abcde 1   0.600   1.320 <NA> <NA> 3 <NA> <NA>
     SPEAKER abcde 1   1.950   0.630 <NA> <NA> 3 <NA> <NA>
 
-If you would like to confirm that your output RTTM file is valid, use the included validate_rttm.py script. We provide an example in `data/diar/baseline.rttm`
+If you would like to confirm that your output RTTM file is valid, use the included validate_rttm.py script. We provide an example in `data/diar/baseline_dev.rttm` and `data/diar/baseline_test.rttm`
+
 ```
  python validate_rttm.py data/diar/baseline.rttm
 ```
 
 
-The file `compute_diarisation_metrics.py` computes both DER and JER. 
+The file `compute_diarisation_metrics.py` computes both DER and JER. If you want to calculate the metrics with our baseline rttm file:
 
 ```
 python compute_diarisation_metrics.py -r voxconverse/dev/*.rttm -s data/diar/baseline.rttm
