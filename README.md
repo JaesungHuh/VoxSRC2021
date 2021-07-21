@@ -1,4 +1,4 @@
-# VoxSRC-20
+# VoxSRC-21
 In this repository we provide the validation toolkit for the [VoxCeleb Speaker Recognition Challenge 2021](http://www.robots.ox.ac.uk/~vgg/data/voxceleb/competition2021.html). The challenge consists of two main tasks, speaker verification and speaker diarisation.  
 
 This repository contains submodules. Please use the following command to clone the repository:
