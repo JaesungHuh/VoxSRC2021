@@ -111,17 +111,17 @@ For instance:
     SPEAKER abcde 1   0.600   1.320 <NA> <NA> 3 <NA> <NA>
     SPEAKER abcde 1   1.950   0.630 <NA> <NA> 3 <NA> <NA>
 
-If you would like to confirm that your output RTTM file is valid, use the included validate_rttm.py script. We provide an example in `data/diar/baseline_dev.rttm` and `data/diar/baseline_test.rttm`
+If you would like to confirm that your output RTTM file is valid, use the included validate_rttm.py script. We provide an example in `data/diar/baseline_dev.rttm`
 
 ```
- python validate_rttm.py data/diar/baseline.rttm
+ python validate_rttm.py data/diar/baseline_dev.rttm
 ```
 
 
 The file `compute_diarisation_metrics.py` computes both DER and JER. If you want to calculate the metrics with our baseline rttm file:
 
 ```
-python compute_diarisation_metrics.py -r voxconverse/dev/*.rttm -s data/diar/baseline.rttm
+python compute_diarisation_metrics.py -r voxconverse/dev/*.rttm -s data/diar/baseline_dev.rttm
 ```
 ### Metrics
 
